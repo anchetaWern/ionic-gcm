@@ -1,6 +1,6 @@
 #Ionic GCM
 
-The source files for my Sitepoint article on Push Notifications in [Ionic Apps with Google Cloud Messaging](http://www.sitepoint.com/push-notifications-in-ionic-apps-with-google-cloud-messaging).
+The source files for my Sitepoint article on [Push Notifications in Ionic Apps with Google Cloud Messaging](http://www.sitepoint.com/push-notifications-in-ionic-apps-with-google-cloud-messaging).
 
 ##License
 

@@ -60,7 +60,7 @@ angular.module('starter', ['ionic'])
         'badge': 'true',
         'sound': 'true',
         'alert': 'true',
-        'senderID': 'YOUR PROJECT ID FROM GOOGLE CONSOLE',
+        'senderID': 'YOUR PROJECT NUMBER FROM GOOGLE CONSOLE',
         'ecb': 'onNotification'
       }
     );

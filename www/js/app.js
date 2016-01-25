@@ -17,53 +17,37 @@ angular.module('starter', ['ionic'])
     }
 
 
-    pushNotification = window.plugins.pushNotification;
+    var push = PushNotification.init({
+        android: {
+            senderID: "YOUR PROJECT NUMBER FROM GOOGLE CONSOLE"
+        }
+    });
 
 
-    window.onNotification = function(e){
+    push.on('registration', function(data) {
+        // data.registrationId
+        alert('register: ' + data.registrationId);
 
-      console.log('notification received');
-       
-      switch(e.event){
-        case 'registered':
-          if(e.regid.length > 0){
-            
-            var device_token = e.regid;
-            RequestsService.register(device_token).then(function(response){
-              alert('registered!');
-            });
-          }
-        break;
+        RequestsService.register(data.registrationId).then(function(response){
+          alert('registered!');
+        });
 
-        case 'message':
-          alert('msg received');
-          alert(JSON.stringify(e));
-        break;
+    });
 
-        case 'error':
-          alert('error occured');
-        break;
+    push.on('notification', function(data) {
+        // data.message,
+        // data.title,
+        // data.count,
+        // data.sound,
+        // data.image,
+        // data.additionalData
+        alert('notify: ' + data.message);
+    });
 
-      }
-    };
-
-
-    window.errorHandler = function(error){
-      alert('an error occured');
-    }
-
-
-    pushNotification.register(
-      onNotification,
-      errorHandler,
-      {
-        'badge': 'true',
-        'sound': 'true',
-        'alert': 'true',
-        'senderID': 'YOUR PROJECT NUMBER FROM GOOGLE CONSOLE',
-        'ecb': 'onNotification'
-      }
-    );
+    push.on('error', function(e) {
+        // e.message
+        alert('err: ' + e.message);
+    });
 
 
   });
